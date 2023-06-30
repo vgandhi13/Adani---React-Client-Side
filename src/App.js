@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import DashBoard from './Pages/DashBoard';
+import Home from './Pages/Home';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { useState, useEffect } from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+function App(){
+        const [service, setService] = useState('Choose Cloud Service')
+        const [buName, setBuName] = useState('Choose Business Unit Name')
 
-export default App;
+        return (
+            <Router>
+                <Routes>
+                    {/* {console.log(service)}
+                    {console.log(buName)} */}
+                    <Route path="/" element={<Home service={service} setService = {setService} buName = {buName} setBuName = {setBuName} />}/>
+                    <Route path="/DashBoard" element={<DashBoard service={service} buName = {buName} />} />
+                </Routes>
+            </Router>
+        );
+    }
+  
+export default App
