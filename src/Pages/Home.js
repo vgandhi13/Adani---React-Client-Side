@@ -1,7 +1,8 @@
 import React from "react";
 import DropdownButton from "../components/DropdownButton";
-import './Home.css'
-import { useNavigate } from 'react-router-dom'
+import './Home.css';
+import { useNavigate } from 'react-router-dom';
+import Logout from '../components/Logout'
 
 function Home({service, setService, buName, setBuName}) {
   const nameOfServices = ['Google Cloud Platform (GCP)', 'Amazon Web Services (AWS)', 'Microsoft Azure'];
@@ -14,8 +15,12 @@ function Home({service, setService, buName, setBuName}) {
 
   return (
     <div className="app">
+      <Logout />
       <div className="image-container">
         <img src="/Adani_2012_logo.png" style={{ width: '50%', height: 'auto' }}  alt="Adani logo" />
+      </div>
+      <div className="message">
+        You are logged In ✅
       </div>
       <div className="centered-container">
 

@@ -1,3 +1,17 @@
+.logout-button {
+  padding: 10px 20px;
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background-color: #c82333;
+}
+
+
 .app {
   display: flex;
   flex-direction: column;
@@ -14,7 +28,7 @@
   width: 50%;
   display: flex;
   justify-content: center;
-  margin-bottom: 150px;
+  margin-bottom: 0px;
 }
 
 .image-container img {
@@ -22,7 +36,16 @@
   max-height: 100%;
 }
 
-/* Rest of your CSS code... */
+.message {
+  font-family: 'Arial, sans-serif';
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 10px;
+  border-radius: 4px;
+}
+
 
   
   .dropdown-container {
@@ -30,6 +53,7 @@
   }
   
   .centered-container {
+    margin-top: 80px;
     display: flex;
     gap: 40px; /* Add a gap between the children elements */
   }
@@ -44,5 +68,6 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    
   }
   

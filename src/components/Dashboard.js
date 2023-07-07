@@ -1,7 +1,7 @@
 import {useEffect,useState} from 'react';
 import PieChart from './PieChart';
 import { useNavigate } from 'react-router-dom';
-
+import Logout from './Logout';
  
  
 const Dashboard = ({service, buName}) => {
@@ -25,6 +25,7 @@ const Dashboard = ({service, buName}) => {
   
     return (
       <div className="col main pt-5 mt-3">
+      <Logout />
         <nav aria-label="breadcrumb">
           <ol className="breadcrumb">
           <li className="breadcrumb-item">
