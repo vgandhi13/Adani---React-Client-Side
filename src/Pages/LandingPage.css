@@ -1,0 +1,13 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  /* background-image: url('/public/dotted-world-map.jpg'); */
+  background-image: linear-gradient(to right, #00b16b, #006db6, #8e278f, #f04c23);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  width: 100%; /* or any desired width */
+}

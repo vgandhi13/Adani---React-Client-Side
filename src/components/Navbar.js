@@ -1,13 +1,15 @@
 import React from 'react'
+import Logout from './Logout'
+import './Navbar.css';
  
 export const Navbar = () => {
     return (
-            <nav class="navbar fixed-top navbar-expand-md navbar-dark  mb-3">
+            <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-custom-white">
                 <div class="flex-row d-flex">
                     <button type="button" class="navbar-toggler mr-2 " data-toggle="offcanvas" title="Toggle responsive left sidebar">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <a class="navbar-brand" href="https://radixweb.com/blog/best-backend-frameworks" title="Free Bootstrap 4 Admin Template"><img style={{width: '6rem'}} src="/Adani-Logo.jpeg" alt="Logo" /></a>
+                    <a class="navbar-brand" href="https://radixweb.com/blog/best-backend-frameworks" title="Free Bootstrap 4 Admin Template"><img style={{width: '6rem', marginLeft: '0.5rem'}} src="/Adani-Logo-removebg-preview.png" alt="Logo" /></a>
                 </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
                     <span class="navbar-toggler-icon"></span>
@@ -15,13 +17,13 @@ export const Navbar = () => {
                 <div class="navbar-collapse collapse" id="collapsingNavbar">
                     <ul class="navbar-nav">
                         <li class="nav-item active">
-                            <a class="nav-link" href="https://radixweb.com/blog/best-backend-frameworks">Home <span class="sr-only">Home</span></a>
+                            <a class="nav-link" href="https://radixweb.com/blog/best-backend-frameworks">Home<span class="sr-only">Home</span></a>
                         </li>
-                        <li class="nav-item">
+                        {/* <li class="nav-item">
                             <a class="nav-link" href="//www.codeply.com">Link</a>
-                        </li>
+                        </li> */}
                     </ul>
-                    <ul class="navbar-nav ml-auto">
+                    {/* <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="#myAlert" data-toggle="collapse">Alert</a>
                         </li>
@@ -43,8 +45,9 @@ export const Navbar = () => {
                           <i class="fas fa-align-justify"></i>
                       </a>
                     </li>
-                    </ul>
+                    </ul> */}
                 </div>
+                <Logout />
        </nav>
     )
 }

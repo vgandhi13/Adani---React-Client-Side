@@ -1,0 +1,48 @@
+.list-group {
+    flex: 0 0 auto;
+    margin-right: 1rem;
+    min-width: 250px; /* Increase the minimum width for a wider list group */
+    max-width: 400px; /* Increase the maximum width for a wider list group */
+  }
+  
+  .list-group-heading {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    color: #333;
+  }
+  
+  .scrollable-list {
+    max-height: calc(100% - 2.5rem); /* Subtract the height of the heading and spacing from the max-height */
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #888888 var(--scrollbar-track-color);
+  }
+  
+  .scrollable-list::-webkit-scrollbar {
+    width: var(--scrollbar-width);
+  }
+  
+  .scrollable-list::-webkit-scrollbar-thumb {
+    background-color: #888888;
+    border-radius: var(--scrollbar-thumb-border-radius);
+  }
+  
+  .scrollable-list::-webkit-scrollbar-track {
+    background-color: var(--scrollbar-track-color);
+  }
+  
+  :root {
+    --scrollbar-width: 8px;
+    --scrollbar-thumb-border-radius: 4px;
+    --scrollbar-track-color: #f0f0f0;
+  }
+  
+  .list-group-item {
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .list-group-item:hover {
+    background-color: #f0f0f0;
+  }
+  

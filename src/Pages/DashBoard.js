@@ -8,7 +8,7 @@ function DashBoard({service, buName}){
  
         return (
             <div>
-                {/* <Navbar/> */}
+                <Navbar/>
                 <div class="container-fluid" id="main">
                  <div class="row row-offcanvas row-offcanvas-left">
                    <Sidebar/>

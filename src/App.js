@@ -1,7 +1,9 @@
 import React from 'react';
 import DashBoard from './Pages/DashBoard';
-import Home from './Pages/Home';
+import IdleResourcesPage from './Pages/IdleResourcesPage';
 import LoginForm from './Pages/LoginForm';
+import LandingPage from './Pages/LandingPage';
+
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useState, useEffect } from 'react'
 
@@ -16,8 +18,9 @@ function App(){
                     {/* {console.log(service)}
                     {console.log(buName)} */}
                     <Route path="/Login" element={<LoginForm setToken = {setToken} />}/>
-                    <Route path="/" element={<Home service={service} setService = {setService} buName = {buName} setBuName = {setBuName} />}/>
+                    <Route path="/IdleResourcesCloudSelection" element={<IdleResourcesPage service={service} setService = {setService} buName = {buName} setBuName = {setBuName} />}/>
                     <Route path="/DashBoard" element={<DashBoard service={service} buName = {buName} />} />
+                    <Route path="/LandingPage" element={<LandingPage />} />
                 </Routes>
             </Router>
         );
