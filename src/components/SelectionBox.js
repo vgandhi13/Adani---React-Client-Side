@@ -25,9 +25,11 @@ const SelectionBox = () => {
     transition: 'border-color 0.3s ease',
   }}
   onMouseEnter={(e) => {
+    e.currentTarget.style.background = '#d9d9d9'; // Set background to a darker shade of grey on hover
     e.currentTarget.style.borderColor = '#000'; // Set border color to match text font color
   }}
   onMouseLeave={(e) => {
+    e.currentTarget.style.background = '#f8f9fa'; // Reset background color
     e.currentTarget.style.borderColor = 'transparent'; // Reset border color
   }}
   onClick={() => handleCardClick('/IdleResourcesCloudSelection')}
@@ -67,9 +69,11 @@ const SelectionBox = () => {
     transition: 'border-color 0.3s ease',
   }}
   onMouseEnter={(e) => {
+    e.currentTarget.style.background = '#d9d9d9'; // Set background to a darker shade of grey on hover
     e.currentTarget.style.borderColor = '#000'; // Set border color to match text font color
   }}
   onMouseLeave={(e) => {
+    e.currentTarget.style.background = '#f8f9fa'; // Reset background color
     e.currentTarget.style.borderColor = 'transparent'; // Reset border color
   }}
   onClick={() => handleCardClick('pageA')}
@@ -109,9 +113,11 @@ const SelectionBox = () => {
     transition: 'border-color 0.3s ease',
   }}
   onMouseEnter={(e) => {
+    e.currentTarget.style.background = '#d9d9d9'; // Set background to a darker shade of grey on hover
     e.currentTarget.style.borderColor = '#000'; // Set border color to match text font color
   }}
   onMouseLeave={(e) => {
+    e.currentTarget.style.background = '#f8f9fa'; // Reset background color
     e.currentTarget.style.borderColor = 'transparent'; // Reset border color
   }}
   onClick={() => handleCardClick('pageA')}

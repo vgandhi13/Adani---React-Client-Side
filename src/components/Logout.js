@@ -6,7 +6,9 @@ const Logout = () => {
     const navigator = useNavigate()
 
     function handleLogout() {
-        navigator('/login')
+        // Remove token from session storage
+        sessionStorage.removeItem('authToken');   
+        navigator('/')
     }
 
   return (

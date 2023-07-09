@@ -3,6 +3,7 @@ import './IdleResourcesPage.css';
 import { useNavigate } from 'react-router-dom';
 import Navbar from "../components/Navbar";
 import CustomListGroup from "../components/CustomListGroup";
+import AuthVerification from "../Services/AuthVerification";
 
 function Home({ service, setService, buName, setBuName }) {
   const nameOfServices = ['Google Cloud Platform (GCP)', 'Amazon Web Services (AWS)', 'Microsoft Azure'];
@@ -14,7 +15,8 @@ function Home({ service, setService, buName, setBuName }) {
   }
 
   return (
-    <div className="resource-app">
+    <AuthVerification>
+      <div className="resource-app">
       <Navbar />
       <div style={{marginTop:"4rem" ,marginBottom:"4rem", fontSize:"3.5rem"}} className="font-heading">Make a Selection</div>
       <div className="centered-container">
@@ -36,6 +38,7 @@ function Home({ service, setService, buName, setBuName }) {
         <button className="continue-button" onClick={handleClick}>Continue</button>
       </div>
     </div>
+    </AuthVerification>
   );
 }
 

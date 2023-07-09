@@ -7,10 +7,6 @@ import Logout from './Logout';
 const Dashboard = ({service, buName}) => {
     const [record, setRecord] = useState([]);
     const navigator = useNavigate();
-    const handleHomeClick = (event) => {
-      event.preventDefault(); // Prevent the default link behavior
-      navigator('/'); // Navigate to the home page path
-    };
     
   
     const getData = () => {
@@ -29,7 +25,10 @@ const Dashboard = ({service, buName}) => {
         <nav aria-label="breadcrumb">
           <ol className="breadcrumb">
           <li className="breadcrumb-item">
-            <a href="https://google.com" onClick={handleHomeClick}>Home</a>
+            <a href="LandingPage" >Home</a>
+          </li>
+          <li className="breadcrumb-item">
+            <a href="IdleResourcesCloudSelection" >Back to Selection</a>
           </li>
             <li className="breadcrumb-item active" aria-current="page">Data</li>
           </ol>
