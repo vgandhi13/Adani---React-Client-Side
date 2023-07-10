@@ -10,16 +10,17 @@ import { useState, useEffect } from 'react'
 function App(){
         const [service, setService] = useState('Choose Cloud Service')
         const [buName, setBuName] = useState('Choose Business Unit Name')
+        const [userObj, setUserObj] = useState (null);
 
         return (
             <Router>
                 <Routes>
                     {/* {console.log(service)}
                     {console.log(buName)} */}
-                    <Route path="/" element={<LoginForm />}/>
+                    <Route path="/" element={<LoginForm userObj={userObj} setUserObj={setUserObj} />}/>
                     <Route path="/IdleResourcesCloudSelection" element={<IdleResourcesPage service={service} setService = {setService} buName = {buName} setBuName = {setBuName} />}/>
-                    <Route path="/DashBoard" element={<DashBoard service={service} buName = {buName} />} />
-                    <Route path="/LandingPage" element={<LandingPage />} />
+                    <Route path="/DashBoard" element={<DashBoard service={service} buName = {buName} userObj = {userObj} />} />
+                    <Route path="/LandingPage" element={<LandingPage  />} />
                 </Routes>
             </Router>
         );

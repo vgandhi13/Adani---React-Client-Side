@@ -5,7 +5,7 @@ import Dashboard from '../components/Dashboard';
 import { Route, Routes } from 'react-router-dom';
 import AuthVerification from '../Services/AuthVerification';
 
-function DashBoard({service, buName}){
+function DashBoard({service, buName, userObj}){
  
         return (
             <AuthVerification>
@@ -13,8 +13,8 @@ function DashBoard({service, buName}){
                     <Navbar/>
                     <div class="container-fluid" id="main">
                     <div class="row row-offcanvas row-offcanvas-left">
-                    <Sidebar/>
-                        <Dashboard service={service} buName={buName} />
+                    <Sidebar userObj={userObj} />
+                        <Dashboard service={service} buName={buName} userObj={userObj} />
                         </div>
                     </div>  
                 </div>  

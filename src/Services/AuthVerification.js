@@ -6,12 +6,11 @@ const AuthVerification = ({ children }) => {
   const navigator = useNavigate();
   useEffect(() => {
     const verifyToken = async () => {
-      const token = sessionStorage.getItem('authToken'); // Retrieve token from session storage
+      const storedToken = sessionStorage.getItem('adaniCloudOpsAuthToken'); // Retrieve token from session storage
       
-      if (token) {
+      if (storedToken) {
         try {
           // Send API request to verify token
-          const storedToken = sessionStorage.getItem('authToken');
           let response = await authenticate(storedToken)
           console.log(response)
         } catch (error) {

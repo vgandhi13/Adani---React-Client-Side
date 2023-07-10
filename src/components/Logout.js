@@ -7,7 +7,7 @@ const Logout = () => {
 
     function handleLogout() {
         // Remove token from session storage
-        sessionStorage.removeItem('authToken');   
+        sessionStorage.removeItem('adaniCloudOpsAuthToken');   
         navigator('/')
     }
 

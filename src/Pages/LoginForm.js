@@ -5,7 +5,7 @@ import { getEmployee, authenticate } from '../Services/Requests';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
-const LoginForm = () => {
+const LoginForm = ({userObj, setUserObj}) => {
   const navigator = useNavigate();
   const [invalid, setInvalid] = useState('');
 
@@ -22,10 +22,12 @@ const LoginForm = () => {
     let result = null;
     try {
       result = await getEmployee(email, password);
-      console.log(result)
+      
       const authToken = result.data.token;
-  
-      sessionStorage.setItem('authToken', authToken);
+
+      setUserObj(result.data.user)
+      console.log(userObj)
+      sessionStorage.setItem('adaniCloudOpsAuthToken', authToken);
       // const storedToken = sessionStorage.getItem('authToken');
       // console.log(storedToken);
       // result = await authenticate(authToken)

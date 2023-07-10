@@ -2,12 +2,16 @@ import {useEffect,useState} from 'react';
 import PieChart from './PieChart';
 import { useNavigate } from 'react-router-dom';
 import Logout from './Logout';
+import './Dashboard.css';
  
  
-const Dashboard = ({service, buName}) => {
+const Dashboard = ({service, buName, userObj}) => {
     const [record, setRecord] = useState([]);
     const navigator = useNavigate();
     
+    const handleBackClick = (endpoint) => {
+      navigator(endpoint);
+    };
   
     const getData = () => {
       fetch('https://jsonplaceholder.typicode.com/users')
@@ -25,10 +29,10 @@ const Dashboard = ({service, buName}) => {
         <nav aria-label="breadcrumb">
           <ol className="breadcrumb">
           <li className="breadcrumb-item">
-            <a href="LandingPage" >Home</a>
+          <button className="hyperlink-button" onClick={() => handleBackClick('/LandingPage')}>Home</button>
           </li>
           <li className="breadcrumb-item">
-            <a href="IdleResourcesCloudSelection" >Back to Selection</a>
+            <button className="hyperlink-button" onClick={() => handleBackClick('/IdleResourcesCloudSelection')}>Back to Selection</button>
           </li>
             <li className="breadcrumb-item active" aria-current="page">Data</li>
           </ol>
