@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar";
 import CustomListGroup from "../components/CustomListGroup";
 import AuthVerification from "../Services/AuthVerification";
 
-function Home({ service, setService, buName, setBuName }) {
+function Home({ service, setService, buName, setBuName, setUserObj  }) {
   const nameOfServices = ['Google Cloud Platform (GCP)', 'Amazon Web Services (AWS)', 'Microsoft Azure'];
   const nameOfBU = ['Adani Enterprises Limited (AEL- it, corp)', 'Adani Digital Labs (ADL)', 'Adani Electricity Mumbai Ltd (AEML)', 'Adani Green Energy Ltd (AGEL)', 'ANIL', 'Adani Ports & SEZ Ltd (APSEZ)', 'Adani Total Gas Ltd (AGTL)', 'Airport', 'Bunkering', 'Capital', 'Defense', 'Howe', 'Mundra Petrochem Ltd (MPL)', 'Mundra Solar PV Ltd (MSPVL)', 'Natural Resources (natural, natural rs)', 'Power', 'Realty', 'Transmission'];
   const navigator = useNavigate();
@@ -16,7 +16,7 @@ function Home({ service, setService, buName, setBuName }) {
   }
 
   return (
-    <AuthVerification onAuthChange={setIsAuthenticated}>
+    <AuthVerification onAuthChange={setIsAuthenticated} setUserObj={setUserObj} >
       {isAuthenticated && (
         <div className="resource-app">
           <Navbar />

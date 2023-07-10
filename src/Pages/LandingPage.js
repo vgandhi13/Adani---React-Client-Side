@@ -4,11 +4,11 @@ import SelectionBox from "../components/SelectionBox";
 import './LandingPage.css';
 import AuthVerification from "../Services/AuthVerification";
 
-const Selection = () => {
+const Selection = ({setUserObj}) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   return (
-    <AuthVerification onAuthChange={setIsAuthenticated}>
+    <AuthVerification onAuthChange={setIsAuthenticated} setUserObj={setUserObj} >
       {isAuthenticated && (
         <div className='app'>
           <Navbar />

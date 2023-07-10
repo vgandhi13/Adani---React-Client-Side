@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { authenticate } from './Requests';
 import { useNavigate } from 'react-router-dom';
 
-const AuthVerification = ({ children, onAuthChange }) => {
+const AuthVerification = ({ children, onAuthChange, setUserObj }) => {
   const navigator = useNavigate();
   useEffect(() => {
     const verifyToken = async () => {
@@ -13,6 +13,7 @@ const AuthVerification = ({ children, onAuthChange }) => {
           // Send API request to verify token
           let response = await authenticate(storedToken);
           console.log(response);
+          setUserObj(response.data.user)
           onAuthChange(true); // Notify the parent component about successful authentication
         } catch (error) {
           // Handle API error
