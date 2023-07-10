@@ -21,8 +21,8 @@ export const authenticate = async (token) => {
           Authorization: `Token ${token}`, // Include the token in the Authorization header
         },
       });
-  
-      return response.data; // Return the response data
+      console.log('new response' + response)
+      return response; // Return the response data
     } catch (error) {
       console.log(`Error detected: ${error}`);
       throw error;
