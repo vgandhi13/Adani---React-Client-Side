@@ -3,8 +3,9 @@ import { Card } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCloud, faScrewdriverWrench} from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
+import { getCloudServices } from '../Services/Requests';
 
-const SelectionBox = () => {
+const SelectionBox = ({userObj}) => {
   const navigator = useNavigate();
 
   const handleCardClick = (page) => {

@@ -2,18 +2,23 @@ import React, { useEffect } from 'react';
 import { authenticate } from './Requests';
 import { useNavigate } from 'react-router-dom';
 
-const AuthVerification = ({ children, onAuthChange, setUserObj }) => {
+const AuthVerification = ({ userObj, children, onAuthChange, setUserObj, afterAuthCallback }) => {  // afterAuthCallback is an optional prop
   const navigator = useNavigate();
+
   useEffect(() => {
     const verifyToken = async () => {
       const storedToken = sessionStorage.getItem('adaniCloudOpsAuthToken'); // Retrieve token from session storage
-      
+
       if (storedToken) {
         try {
           // Send API request to verify token
           let response = await authenticate(storedToken);
-          console.log(response);
-          setUserObj(response.data.user)
+          setUserObj(response.data.user);
+          
+
+          if (afterAuthCallback) {
+            await afterAuthCallback(); // Execute the callback function after authentication
+          }
           onAuthChange(true); // Notify the parent component about successful authentication
         } catch (error) {
           // Handle API error

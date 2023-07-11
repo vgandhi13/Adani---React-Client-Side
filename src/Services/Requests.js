@@ -29,3 +29,13 @@ export const authenticate = async (token) => {
     }
   };
   
+  export const getCloudServices = async (id) => {
+    try {
+        return axios.get(`${baseURL}/IdleResources/employeeAuthorizedBU`, {
+            params: { id }  // Pass the ID as a query parameter
+        });
+    } catch (e) {
+        console.log(`Error detected: ${e}`);
+        throw e;
+    }
+};
