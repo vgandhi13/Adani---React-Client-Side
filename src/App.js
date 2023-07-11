@@ -18,9 +18,9 @@ function App(){
                     {/* {console.log(service)}
                     {console.log(buName)} */}
                     <Route path="/" element={<LoginForm userObj={userObj} setUserObj={setUserObj} />}/>
-                    <Route path="/IdleResourcesCloudSelection" element={<IdleResourcesPage service={service} setService = {setService} buName = {buName} setBuName = {setBuName} setUserObj={setUserObj} />}/>
+                    <Route path="/IdleResourcesCloudSelection" element={<IdleResourcesPage service={service} setService = {setService} buName = {buName} setBuName = {setBuName} userObj={userObj} setUserObj={setUserObj} />}/>
                     <Route path="/DashBoard" element={<DashBoard service={service} buName = {buName} userObj = {userObj} setUserObj={setUserObj} />} />
-                    <Route path="/LandingPage" element={<LandingPage  setUserObj={setUserObj} />} />
+                    <Route path="/LandingPage" element={<LandingPage userObj={userObj} setUserObj={setUserObj} />} />
                 </Routes>
             </Router>
         );

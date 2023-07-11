@@ -1,18 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Navbar from "../components/Navbar";
 import SelectionBox from "../components/SelectionBox";
 import './LandingPage.css';
 import AuthVerification from "../Services/AuthVerification";
 
-const Selection = ({setUserObj}) => {
+const Selection = ({userObj, setUserObj}) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   return (
-    <AuthVerification onAuthChange={setIsAuthenticated} setUserObj={setUserObj} >
+    <AuthVerification userObj={userObj} onAuthChange={setIsAuthenticated} setUserObj={setUserObj} >
       {isAuthenticated && (
         <div className='app'>
           <Navbar />
-          <SelectionBox />
+          {console.log(userObj)}
+          <SelectionBox userObj={userObj} />
         </div>
       )}
     </AuthVerification>

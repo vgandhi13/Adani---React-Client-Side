@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 import './LoginForm.css';
-import { getEmployee, authenticate } from '../Services/Requests';
+import { getEmployee } from '../Services/Requests';
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
@@ -26,6 +26,7 @@ const LoginForm = ({ userObj, setUserObj }) => {
       const authToken = result.data.token;
 
       setUserObj(result.data.user);
+      // console.log(userObj.id);
       sessionStorage.setItem('adaniCloudOpsAuthToken', authToken);
       navigator('/LandingPage');
     } catch (error) {
