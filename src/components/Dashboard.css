@@ -7,3 +7,23 @@
     cursor: pointer;
   }
   
+
+  /* Add the following styles for card hover effect */
+.card:hover {
+  background-color: #f8f9fa;
+}
+
+.card:hover .rotate {
+  color: #171616;
+}
+
+.card:hover h6,
+.card:hover h1 {
+  color: #171616;
+  transition: color 0.3s ease-in-out;
+}
+
+/* Add the following style to change the cursor on card hover */
+.card:hover {
+  cursor: pointer;
+}

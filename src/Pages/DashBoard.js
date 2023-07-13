@@ -5,12 +5,12 @@ import Sidebar from '../components/Sidebar';
 import Dashboard from '../components/Dashboard';
 import AuthVerification from '../Services/AuthVerification';
 
-function DashBoard({ service, buName, userObj, setUserObj }) {
+function DashBoard({ services, buNames, userObj, setUserObj }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const navigator = useNavigate();
 
   // Reroute logic based on service and buName values
-  if (service === 'Choose Cloud Service' && buName === 'Choose Business Unit Name') {
+  if (services.length === 0 || buNames.length === 0) {
     navigator('/IdleResourcesCloudSelection');
   }
 
@@ -22,7 +22,7 @@ function DashBoard({ service, buName, userObj, setUserObj }) {
           <div className="container-fluid" id="main">
             <div className="row row-offcanvas row-offcanvas-left">
               <Sidebar userObj={userObj} />
-              <Dashboard service={service} buName={buName} userObj={userObj} />
+              <Dashboard services={services} buNames={buNames} />
             </div>
           </div>
         </div>
