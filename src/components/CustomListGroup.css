@@ -1,9 +1,9 @@
 .list-group {
-    flex: 0 0 auto;
-    margin-right: 1rem;
-    min-width: 250px; /* Increase the minimum width for a wider list group */
-    max-width: 400px; /* Increase the maximum width for a wider list group */
-  }
+  flex: 0 0 auto;
+  margin-right: 1rem;
+  min-width: 250px; /* Increase the minimum width for a wider list group */
+  max-width: 400px; /* Increase the maximum width for a wider list group */
+}
   
   .list-group-heading {
     margin-bottom: 0.5rem;
@@ -12,7 +12,7 @@
   }
   
   .scrollable-list {
-    max-height: calc(100% - 2.5rem); /* Subtract the height of the heading and spacing from the max-height */
+    height: 300px; /* Set a fixed height for the scrollable list */
     overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: #888888 var(--scrollbar-track-color);

@@ -2,7 +2,9 @@ import React from 'react';
 import { ListGroup } from 'react-bootstrap';
 import './CustomListGroup.css';
 
-const CustomListGroup = ({ items, activeItem, onItemClick, heading }) => {
+const CustomListGroup = ({ items, activeItems, onItemClick, heading }) => {
+  const isActive = (item) => activeItems.includes(item);
+
   return (
     <div className="list-group">
       <h2 className="list-group-heading">{heading}</h2>
@@ -10,7 +12,7 @@ const CustomListGroup = ({ items, activeItem, onItemClick, heading }) => {
         {items.map((item) => (
           <ListGroup.Item
             key={item}
-            active={activeItem === item}
+            active={isActive(item)}
             onClick={() => onItemClick(item)}
             className="list-group-item"
           >
