@@ -61,3 +61,25 @@ export const getUnusedDisks = async (cloud_services, bu_names) => {
       throw e;
   }
 }
+
+export const getUnusedImages = async (cloud_services, bu_names) => {
+  try {
+    return axios.get(`${baseURL}/IdleResources/get_unused_images`, {
+      params: {cloud_services, bu_names}  // pass the cloud services, and bu names lists
+    })
+  } catch(e) {
+      console.log(`Error detected: ${e}`);
+      throw e;
+  }
+}
+
+export const getUnusedIp = async (cloud_services, bu_names) => {
+  try {
+    return axios.get(`${baseURL}/IdleResources/get_unused_ip`, {
+      params: {cloud_services, bu_names}  // pass the cloud services, and bu names lists
+    })
+  } catch(e) {
+      console.log(`Error detected: ${e}`);
+      throw e;
+  }
+}

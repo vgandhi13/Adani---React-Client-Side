@@ -3,31 +3,27 @@ import PieChart from './PieChart';
 import { useNavigate } from 'react-router-dom';
 import Logout from './Logout';
 import './Dashboard.css';
-import { getUnusedDisks } from '../Services/Requests';
+import { getUnusedDisks, getUnusedImages, getUnusedIp } from '../Services/Requests';
 
 const Dashboard = ({ services, buNames }) => {
-  const [record, setRecord] = useState([]);
   const [disks, setDisks] = useState([]);
+  const [ip, setIp] = useState([]);
+  const [images, setImages] = useState([]);
   const [allResources, setAllResources] = useState([]);
   const navigator = useNavigate();
   const handleBackClick = (endpoint) => {
     navigator(endpoint);
   };
 
-  // const getData = () => {
-  //   fetch('https://jsonplaceholder.typicode.com/users')
-  //     .then((response) => response.json())
-  //     .then((res) => setRecord(res));
-  // };
-
-  useEffect(() => {
-   // getData();
-   setRecord([1,2,3,4,5, 6, 7]) // set this to size of the one being displayed -- disks, images, or all
+   useEffect(() => {
    const makeAPICalls = async () => {
-    let resp = await getUnusedDisks(services, buNames)
-    setDisks(resp.data);
-    
-    console.log(resp.data)
+    let response = await getUnusedDisks(services, buNames)
+    setDisks(response.data);
+    response = await getUnusedImages(services, buNames)
+    setImages(response.data)
+    response = await getUnusedIp(services, buNames)
+    setIp(response.data)
+    console.log(response.data)
    }
    
    makeAPICalls()
@@ -98,7 +94,7 @@ const Dashboard = ({ services, buNames }) => {
                 <i className="fa fa-list fa-4x"></i>
               </div>
               <h6 className="text-uppercase">Idle IP addresses</h6>
-              <h1 className="display-4">87</h1>
+              <h1 className="display-4">{ip.length}</h1>
             </div>
           </div>
         </div>
@@ -109,7 +105,7 @@ const Dashboard = ({ services, buNames }) => {
                 <i className="fa fa-save fa-4x"></i>
               </div>
               <h6 className="text-uppercase">Idle Images</h6>
-              <h1 className="display-4">125</h1>
+              <h1 className="display-4">{images.length}</h1>
             </div>
           </div>
         </div>
@@ -121,7 +117,7 @@ const Dashboard = ({ services, buNames }) => {
                 <i class="fas fa-4x fa-equals"></i>
               </div>
               <h6 className="text-uppercase">Total Idle Resources</h6>
-              <h1 className="display-4">300</h1>
+              <h1 className="display-4">{images.length + ip.length + disks.length}</h1>
             </div>
           </div>
         </div>
