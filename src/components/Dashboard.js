@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PieChart from './PieChart';
 import { useNavigate } from 'react-router-dom';
 import Logout from './Logout';
@@ -10,31 +10,45 @@ const Dashboard = ({ services, buNames }) => {
   const [ip, setIp] = useState([]);
   const [images, setImages] = useState([]);
   const [allResources, setAllResources] = useState([]);
+  const [selectedCard, setSelectedCard] = useState('total'); // 'disks', 'images', 'ip', 'total'
   const navigator = useNavigate();
   const handleBackClick = (endpoint) => {
     navigator(endpoint);
   };
 
-   useEffect(() => {
-   const makeAPICalls = async () => {
-    let response = await getUnusedDisks(services, buNames)
-    setDisks(response.data);
-    response = await getUnusedImages(services, buNames)
-    setImages(response.data)
-    response = await getUnusedIp(services, buNames)
-    setIp(response.data)
-    console.log(response.data)
-   }
-   
-   makeAPICalls()
+  useEffect(() => {
+    const fetchAllResources = async () => {
+      const responseDisks = await getUnusedDisks(services, buNames);
+      const responseImages = await getUnusedImages(services, buNames);
+      const responseIp = await getUnusedIp(services, buNames);
+
+      setDisks(responseDisks.data);
+      setImages(responseImages.data);
+      setIp(responseIp.data);
+
+      // Set all resources initially as the total of disks, images, and IP
+      setAllResources([...responseDisks.data, ...responseImages.data, ...responseIp.data]);
+    };
+
+    fetchAllResources();
   }, []);
 
   useEffect(() => {
-    /*By separating the setAllResources statement into its own useEffect hook, you ensure
-     that it is executed after the disks state has been updated. This should resolve the issue
-      you were facing with the table not showing the data correctly. */
-    setAllResources([...disks])
-  }, [disks])
+    // Update all resources when disks, images, or IP change
+    if (selectedCard === 'disks') {
+      setAllResources(disks);
+    } else if (selectedCard === 'images') {
+      setAllResources(images);
+    } else if (selectedCard === 'ip') {
+      setAllResources(ip);
+    } else if (selectedCard === 'total') {
+      setAllResources([...disks, ...images, ...ip]);
+    }
+  }, [selectedCard, disks, images, ip]);
+
+  const handleCardClick = (card) => {
+    setSelectedCard(card);
+  };
 
   return (
     <div className="col main pt-5 mt-3">
@@ -74,11 +88,13 @@ const Dashboard = ({ services, buNames }) => {
       </div>
       <div className="row mb-3">
         <div className="col-xl-3 col-sm-6 py-2">
-          <div className="card bg-success text-white h-100">
-            <div
-              className="card-body bg-success"
-              style={{ backgroundColor: '#57b960' }}
-            >
+          <div
+            className={`card bg-success text-white h-100 ${
+              selectedCard === 'disks' ? 'selected' : ''
+            }`}
+            onClick={() => handleCardClick('disks')}
+          >
+            <div className="card-body bg-success" style={{ backgroundColor: '#57b960' }}>
               <div className="rotate">
                 <i className="fas fa-compact-disc fa-4x"></i>
               </div>
@@ -88,7 +104,12 @@ const Dashboard = ({ services, buNames }) => {
           </div>
         </div>
         <div className="col-xl-3 col-sm-6 py-2">
-          <div className="card text-white bg-danger h-100">
+          <div
+            className={`card text-white bg-danger h-100 ${
+              selectedCard === 'ip' ? 'selected' : ''
+            }`}
+            onClick={() => handleCardClick('ip')}
+          >
             <div className="card-body bg-danger">
               <div className="rotate">
                 <i className="fa fa-list fa-4x"></i>
@@ -99,7 +120,12 @@ const Dashboard = ({ services, buNames }) => {
           </div>
         </div>
         <div className="col-xl-3 col-sm-6 py-2">
-          <div className="card text-white bg-info h-100">
+          <div
+            className={`card text-white bg-info h-100 ${
+              selectedCard === 'images' ? 'selected' : ''
+            }`}
+            onClick={() => handleCardClick('images')}
+          >
             <div className="card-body bg-info">
               <div className="rotate">
                 <i className="fa fa-save fa-4x"></i>
@@ -110,7 +136,12 @@ const Dashboard = ({ services, buNames }) => {
           </div>
         </div>
         <div className="col-xl-3 col-sm-6 py-2">
-          <div className="card text-white bg-warning h-100">
+          <div
+            className={`card text-white bg-warning h-100 ${
+              selectedCard === 'total' ? 'selected' : ''
+            }`}
+            onClick={() => handleCardClick('total')}
+          >
             <div className="card-body">
               <div className="rotate">
                 <i class="fas fa-plus fa-4x "></i>
@@ -139,16 +170,16 @@ const Dashboard = ({ services, buNames }) => {
               </tr>
             </thead>
             <tbody>
-            {allResources.map((resource) => (
-              <tr key={resource.bu}>
-                <td>{resource.project_name}</td>
-                <td>{resource.disk_name}</td>
-                <td>{resource.description}</td>
-                <td>{resource.last_use_time}</td>
-                <td>{resource.cost_saved}</td>
-              </tr>
-            ))}
-          </tbody>
+              {allResources.map((resource) => (
+                <tr key={resource.bu}>
+                  <td>{resource.project_name}</td>
+                  <td>{resource.disk_name}</td>
+                  <td>{resource.description}</td>
+                  <td>{resource.last_use_time}</td>
+                  <td>{resource.cost_saved}</td>
+                </tr>
+              ))}
+            </tbody>
 
 
           </table>
