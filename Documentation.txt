@@ -1,0 +1,24 @@
+Index.js
+--App.js
+----Pages: (We use all the components here)
+------LoginForm: This page handles the login authentication by making a request to the backend. It stores the employee object and auth token received as response in session storage. Bootstrap used here for the form.
+------LandingPage: First verifies if the authtoken is valid, and then executes the navbar and selection box components. I have used bootstrap card as selection boxes.
+------IdleResourcesSelectionPage: We first make api calls to received the authorized cloud services and business unites of the employee. Then we use customlistgroup from bootstrap to represent each of those and give a multiselect option. All this is stored in react hooks and then passed on to dashboard.
+------DashBoard: Based on the selected business units and cloud service we make api calls to get the data of unused resources, and visualize it using chart.js library on dashboard page.
+----Services:
+------AuthVerification: This component is used by each page. All the other react code is inside this component, and is not executed until AuthVerification finishes excution. It basically checks if the authentication token stored in the session storage is valid or not before allowing any components of the page to render.
+------AuthVerification: This consists of all the functions which make axios API requests to the django-rest backend.
+
+
+
+Things to note:
+1) Set the url in .env with the ip address of the django server
+2) You can use npm start for the development server which will run on the port 3000 on local machine
+3) When done with changes, run the command npm run build. This will create a build file. We need the static folder
+    and the index.html file. Replace the index.html file in templates with this. And add the css, js and media to django' static
+    directory.
+
+    In our setup, when the django server url is hit , django will return this html file and the js, css and media to the browser. 
+    Now this is the only html file that will be served. Our application is a single page application. After that
+    the application in browser will make restful api calls to the django server, and update the pages accordingly. We have setup then
+    routing for urls and pages in react. The urls in django are in fact restful api endpoints.
