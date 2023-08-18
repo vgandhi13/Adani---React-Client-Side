@@ -3,10 +3,13 @@ import PieChart from './PieChart';
 import { useNavigate } from 'react-router-dom';
 import Logout from './Logout';
 import './Dashboard.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDownload} from '@fortawesome/free-solid-svg-icons';
 import { getUnusedDisks, getUnusedImages, getUnusedIp } from '../Services/Requests';
 
 const Dashboard = ({ services, buNames }) => {
   const [disks, setDisks] = useState([]);
+  const [tableHeading, setTableHeading] = useState("All Unused Resources")
   const [ip, setIp] = useState([]);
   const [images, setImages] = useState([]);
   const [allResources, setAllResources] = useState([]);
@@ -48,6 +51,7 @@ const Dashboard = ({ services, buNames }) => {
 
   const handleCardClick = (card) => {
     setSelectedCard(card);
+    setTableHeading(card === "disks" ? "Unused Disks" : card === "total" ? "All Unused Resources" : card === "images" ? "Unused Images" : "Unused Ip Addresses");
   };
 
   return (
@@ -158,7 +162,10 @@ const Dashboard = ({ services, buNames }) => {
 
       <div className="row ">
         <div className="col-lg-8 col-md-12">
-          <h3 className="title mb-3">All Unused Resources</h3>
+          <h3 className="title mb-3">
+            {tableHeading}
+            <FontAwesomeIcon icon={faDownload} size="1x" style={{ marginLeft: "2rem" }} />
+          </h3>
           <table className="table table-striped table-hover">
             <thead>
               <tr className="bg-primary text-white">
@@ -173,7 +180,7 @@ const Dashboard = ({ services, buNames }) => {
               {allResources.map((resource) => (
                 <tr key={resource.bu}>
                   <td>{resource.project_name}</td>
-                  <td>{resource.disk_name}</td>
+                  <td>{resource.name}</td>
                   <td>{resource.description}</td>
                   <td>{resource.last_use_time}</td>
                   <td>{resource.cost_saved}</td>
@@ -186,12 +193,12 @@ const Dashboard = ({ services, buNames }) => {
         </div>
 
         <div className="col-lg-4 col-md-6 col-sm-12 text-center">
-          <h4 className="title mt-3 mb-3 text-center text-secondary">Data in Chart</h4>
+          <h4 className="title mt-3 mb-3 text-center text-secondary">Resource Last Used by Time Range</h4>
           <div
             className="mb-5"
-            style={{ height: '300px', width: '400px', marginLeft: '65px' }}
+            style={{ height: '300px', width: '400px', marginLeft: '9rem' }}
           >
-            <PieChart />
+            <PieChart allResources={allResources} />
           </div>
         </div>
       </div>

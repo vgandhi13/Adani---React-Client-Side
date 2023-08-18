@@ -13,7 +13,8 @@ export const Navbar = () => {
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <a className="navbar-brand" onClick={() => navigator('/LandingPage')} title="Free Bootstrap 4 Admin Template">
-                    <img style={{ width: '6rem', marginLeft: '0.5rem', cursor: 'pointer' }} src="/Adani-Logo-removebg-preview.png" alt="Logo" />
+                    <img style={{ width: '6rem', marginLeft: '0.5rem', cursor: 'pointer' }} src="https://drive.google.com/uc?export=view&id=1mkG_iv5L5XHSV7DyLlm6nNRhwJtjCbvu" alt="Logo" />
+
                     </a>
 
                 </div>

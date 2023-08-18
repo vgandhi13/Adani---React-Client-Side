@@ -22,12 +22,14 @@ const LoginForm = ({ userObj, setUserObj }) => {
     let result = null;
     try {
       result = await getEmployee(email, password);
+      console.log(result)
 
       const authToken = result.data.token;
 
       setUserObj(result.data.user);
       // console.log(userObj.id);
       sessionStorage.setItem('adaniCloudOpsAuthToken', authToken);
+      console.log(sessionStorage.getItem('adaniCloudOpsAuthToken'));
       navigator('/LandingPage');
     } catch (error) {
       // Handle any error that occurred during the request
@@ -47,7 +49,8 @@ const LoginForm = ({ userObj, setUserObj }) => {
   return (
     <div className="loginapp">
       <div className="login-image-container">
-        <img src="/Adani_2012_logo.png" style={{ width: '50%', height: 'auto' }} alt="Adani logo" />
+      <img src="https://drive.google.com/uc?export=view&id=1OdsjYVcXmedKBXjB-5h2BhuoEbpPRYz_" style={{ width: '50%', height: 'auto' }} alt="Adani logo" />
+
       </div>
       <div className="font-heading">Datacenter and Cloud Operations</div>
 
