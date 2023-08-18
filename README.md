@@ -29,4 +29,29 @@ Download and install Node.js from the official website: [https://nodejs.org/](ht
 Open a terminal/command prompt:
 
 ```sh
-git clone https://github.com/username/repository.git
+git clone https://github.com/vgandhi13/Adani---React-Client-Side
+```
+
+
+### 2. Install Dependencies
+
+Install the project's dependencies using npm:
+
+npm install
+
+
+### 3. Run the Development Server
+
+Start the development server:
+
+npm start
+
+
+### 4. Access the Application
+
+Open a web browser and go to [http://localhost:3000](http://localhost:3000) to access the running React application.
+
+## Additional Notes
+
+- Read the project's README or documentation for any specific setup instructions.
+- Some projects might require environment variables or API keys. Consult the documentation for guidance.
