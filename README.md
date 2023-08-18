@@ -53,5 +53,4 @@ Open a web browser and go to [http://localhost:3000](http://localhost:3000) to a
 
 ## Additional Notes
 
-- Read the project's README or documentation for any specific setup instructions.
-- Some projects might require environment variables or API keys. Consult the documentation for guidance.
+- Read the project's Documentation for further specific instructions.
