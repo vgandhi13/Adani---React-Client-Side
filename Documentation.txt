@@ -22,3 +22,4 @@ Things to note:
     Now this is the only html file that will be served. Our application is a single page application. After that
     the application in browser will make restful api calls to the django server, and update the pages accordingly. We have setup then
     routing for urls and pages in react. The urls in django are in fact restful api endpoints.
+
