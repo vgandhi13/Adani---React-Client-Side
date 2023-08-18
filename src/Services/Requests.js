@@ -1,10 +1,11 @@
 import axios from 'axios'
 
-const baseURL = 'http://localhost:8000'
+const baseURL = process.env.REACT_APP_BASE_URL;
 
 
 export const getEmployee = async (email, password) => {
     try {
+        console.log(baseURL)
         return axios.post(`${baseURL}/auth/login`, {
             email, password
         })
@@ -16,6 +17,7 @@ export const getEmployee = async (email, password) => {
 
 export const authenticate = async (token) => {
     try {
+      console.log(baseURL)
       const response = await axios.get(`${baseURL}/auth/test_token`, {
         headers: {
           Authorization: `Token ${token}`, // Include the token in the Authorization header

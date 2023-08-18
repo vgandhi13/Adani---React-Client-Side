@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCloud, faScrewdriverWrench} from '@fortawesome/free-solid-svg-icons';
+import { faCloud, faScrewdriverWrench, faBrain, faCode} from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import { getCloudServices } from '../Services/Requests';
 
@@ -77,7 +77,7 @@ const SelectionBox = ({userObj}) => {
     e.currentTarget.style.background = '#f8f9fa'; // Reset background color
     e.currentTarget.style.borderColor = 'transparent'; // Reset border color
   }}
-  onClick={() => handleCardClick('pageA')}
+  onClick={() => window.open('https://app-backend-uq4a3qdmyad5a.azurewebsites.net', '_blank') }
 >
   <Card.Body
     style={{
@@ -92,13 +92,13 @@ const SelectionBox = ({userObj}) => {
         textAlign: 'center',
       }}
     >
-      Under Construction
+      Open AI Azure LLM
     </Card.Title>
     <Card.Text>
       <br />
       <br />
       <br />
-      <FontAwesomeIcon icon={faScrewdriverWrench} size="7x" style={{ marginBottom: '10px' }} />
+      <FontAwesomeIcon icon={faBrain} size="7x" style={{ marginBottom: '10px' }} />
     </Card.Text>
   </Card.Body>
 </Card>
